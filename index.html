@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mission Control V2</title>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🚀 MISSION CONTROL</div>
+    <nav id="tabs" class="tabs">
+      <button class="tab active" data-tab="dashboard">📊 Dashboard</button>
+      <button class="tab" data-tab="command">🗣️ Command Center</button>
+      <button class="tab" data-tab="projects">📁 Projects</button>
+      <button class="tab" data-tab="revenue">💰 Revenue</button>
+      <button class="tab" data-tab="timeline">📅 Timeline</button>
+      <button class="tab" data-tab="intel">📡 Intel</button>
+      <button class="tab" data-tab="meetings">📞 Meetings</button>
+      <button class="tab" data-tab="youtube">🎬 YouTube</button>
+      <button class="tab" data-tab="crm">👥 CRM</button>
+      <button class="tab" data-tab="pipeline">🧪 Pipeline</button>
+      <button class="tab" data-tab="core">🛡️ Core Stack</button>
+    </nav>
+    <input id="search" class="search" placeholder="Search..."/>
+    <button id="syncNow" class="sync-btn">Sync nu</button>
+    <div id="syncStatus" class="sync-status">—</div>
+    <div id="clock" class="clock"></div>
+  </header>
+
+  <main>
+    <section id="dashboard" class="view active">
+      <div class="kpis">
+        <article class="panel"><h3>Total Ideas</h3><p id="kpiIdeas">1</p></article>
+        <article class="panel"><h3>In Progress</h3><p id="kpiProgress">1</p></article>
+        <article class="panel"><h3>Published This Month</h3><p id="kpiPublished">0</p></article>
+      </div>
+      <div class="actions"><button>+ New Idea</button><button>Export JSON</button><button>Import JSON</button></div>
+      <div class="kanban4">
+        <div class="col"><h4>💡 Ideas</h4><textarea id="dbIdeas" rows="10"></textarea></div>
+        <div class="col"><h4>📚 Research</h4><textarea id="dbResearch" rows="10"></textarea></div>
+        <div class="col"><h4>✍️ Script</h4><textarea id="dbScript" rows="10"></textarea></div>
+        <div class="col"><h4>🎥 Filming</h4><textarea id="dbFilming" rows="10"></textarea></div>
+      </div>
+    </section>
+
+    <section id="command" class="view">
+      <div class="founder panel">
+        <h3>👑 Birgir</h3><p>CEO / Founder</p><span class="status">● ONLINE</span>
+      </div>
+      <h4>Agent Team</h4>
+      <div id="agentsGrid" class="agents-grid"></div>
+    </section>
+
+    <section id="projects" class="view">
+      <div class="actions"><button>+ New Project</button></div>
+      <div class="kanban4">
+        <div class="col"><h4>📦 Backlog</h4><textarea id="pjBacklog" rows="10"></textarea></div>
+        <div class="col"><h4>🔄 In Progress</h4><textarea id="pjProgress" rows="10"></textarea></div>
+        <div class="col"><h4>👀 Review</h4><textarea id="pjReview" rows="10"></textarea></div>
+        <div class="col"><h4>✅ Done</h4><textarea id="pjDone" rows="10"></textarea></div>
+      </div>
+    </section>
+
+    <section id="revenue" class="view">
+      <div class="panel">
+        <h3>Monthly Recurring Revenue</h3>
+        <label>Mål (SEK): <input id="revGoal" type="number"/></label>
+        <label>Nu (SEK): <input id="revNow" type="number"/></label>
+        <div class="progress"><div id="revBar"></div></div>
+        <p id="revText"></p>
+      </div>
+    </section>
+
+    <section id="timeline" class="view">
+      <div class="panel">
+        <h3>Launch Roadmap</h3>
+        <textarea id="timelineText" rows="12" placeholder="Datum - Milestone"></textarea>
+      </div>
+    </section>
+
+    <section id="intel" class="view"><div class="panel"><h3>AI Intel Report</h3><textarea id="intelText" rows="14"></textarea></div></section>
+    <section id="meetings" class="view"><div class="panel"><h3>Meetings & Action Items</h3><textarea id="meetingsText" rows="14"></textarea></div></section>
+
+    <section id="youtube" class="view">
+      <div class="panel">
+        <h3>Subscriber Quest</h3>
+        <label>Subs nu: <input id="subsNow" type="number"/></label>
+        <label>Mål: <input id="subsGoal" type="number" value="5000"/></label>
+        <div class="progress"><div id="subsBar"></div></div>
+        <p id="subsText"></p>
+      </div>
+    </section>
+
+    <section id="crm" class="view"><div class="panel"><h3>Contacts</h3><textarea id="crmText" rows="14" placeholder="Namn | Stage | Next step"></textarea></div></section>
+    <section id="pipeline" class="view"><div class="panel"><h3>New Ideas Pipeline</h3><textarea id="pipeText" rows="14"></textarea></div></section>
+
+    <section id="core" class="view">
+      <div class="panel">
+        <h3>Biggie Core Stack</h3>
+        <p class="muted">Källa: <code>../BIGGIE_CORE_STACK.md</code></p>
+        <div class="actions">
+          <button id="loadCore">Ladda från fil</button>
+          <button id="saveCore">Spara lokalt</button>
+        </div>
+        <textarea id="coreText" rows="18" placeholder="Core stack-innehåll..."></textarea>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Järna Bed & Breakfast – Förslag ny webb</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">Järna Bed & Breakfast</div>
+      <button class="hamburger" id="menuToggle" aria-label="Öppna meny" aria-expanded="false">☰</button>
+      <div class="menu" id="mainMenu">
+        <a href="#boende">Boende</a>
+        <a href="#priser">Priser</a>
+        <a href="#bilder">Bilder</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="cta" href="tel:0706651144">Boka: 070 665 1144</a>
+    </nav>
+
+    <div class="hero-inner container">
+      <div>
+        <p class="eyebrow">Egen lägenhet • Centrala Järna • Hundvänligt</p>
+        <h1>Bo bekvämt i egen lägenhet hos Järna Bed & Breakfast</h1>
+        <p class="lead">En fullt utrustad 2-rumslägenhet med egen ingång, uteplats och plats för upp till fyra personer. Frukost, wi-fi, parkering, lakan, handdukar och städning ingår.</p>
+        <div class="actions">
+          <a class="btn primary" href="tel:0706651144">Ring och boka</a>
+          <a class="btn" href="mailto:hans.rekestad@gmail.com">Skicka e-post</a>
+        </div>
+      </div>
+      <img src="assets/hilda-3.jpg" alt="Järna Bed and Breakfast exteriör" />
+    </div>
+  </header>
+
+  <main>
+    <section class="container section" id="boende">
+      <h2>Om boendet</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Det här ingår</h3>
+          <ul>
+            <li>Hel egen lägenhet med egen ingång</li>
+            <li>Två rum och kök, upp till 4 sängplatser</li>
+            <li>Frukost med råvaror i köket</li>
+            <li>Lakan, handdukar och slutstädning</li>
+            <li>Wi-fi och parkering</li>
+            <li>Möjlighet till plats för husbil</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Läge</h3>
+          <p>Ni bor 300 meter från Järna centrum och 700 meter från pendeltågstationen. Matbutiker, apotek, bankomat och restauranger finns inom några minuters promenad. Samtidigt har ni nära till fina promenadstråk i naturen.</p>
+          <p>Hundar är välkomna. Utomhus behöver hundar hållas kopplade.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="priser">
+      <h2>Priser & bokning</h2>
+      <div class="pricing">
+        <div class="price-card">
+          <p class="small">Första natten</p>
+          <p class="price">750 kr</p>
+          <p>per person</p>
+        </div>
+        <div class="price-card">
+          <p class="small">Ytterligare nätter / gäster</p>
+          <p class="price">500 kr</p>
+          <p>per person och natt</p>
+        </div>
+      </div>
+      <p class="note">Barnpris diskuteras vid bokning. Tvättmaskin finns att tillgå mot extra kostnad.</p>
+      <p class="note">Bokning sker direkt via telefon, SMS eller e-post — inte via Airbnb.</p>
+    </section>
+
+    <section class="container section" id="bilder">
+      <h2>Bilder från boendet</h2>
+      <div class="gallery-shell">
+        <button class="gallery-nav" id="galleryPrev" aria-label="Föregående bilder">‹</button>
+        <div class="gallery" id="galleryTrack">
+          <img src="assets/hilda-3.jpg" alt="Bild 1" class="gallery-item" data-index="0" />
+          <img src="assets/IMG_0416-735x1024.jpeg" alt="Bild 2" class="gallery-item" data-index="1" />
+          <img src="assets/IMG_0413-1-768x1024.jpeg" alt="Bild 3" class="gallery-item" data-index="2" />
+          <img src="assets/IMG_0417-768x1024.jpeg" alt="Bild 4" class="gallery-item" data-index="3" />
+          <img src="assets/IMG_0399-1-768x1024.jpeg" alt="Bild 5" class="gallery-item" data-index="4" />
+          <img src="assets/IMG_0407-768x1024.jpeg" alt="Bild 6" class="gallery-item" data-index="5" />
+          <img src="assets/IMG_0402-1-768x1024.jpeg" alt="Bild 7" class="gallery-item" data-index="6" />
+          <img src="assets/IMG_0410-1-768x1024.jpeg" alt="Bild 8" class="gallery-item" data-index="7" />
+          <img src="assets/IMG_0404-1-768x1024.jpeg" alt="Bild 9" class="gallery-item" data-index="8" />
+          <img src="assets/IMG_0411-1-768x1024.jpeg" alt="Bild 10" class="gallery-item" data-index="9" />
+          <img src="assets/IMG_0401-768x1024.jpeg" alt="Bild 11" class="gallery-item" data-index="10" />
+          <img src="assets/IMG_0408-768x1024.jpeg" alt="Bild 12" class="gallery-item" data-index="11" />
+          <img src="assets/IMG_0405-1-768x1024.jpeg" alt="Bild 13" class="gallery-item" data-index="12" />
+          <img src="assets/IMG_0412-768x1024.jpeg" alt="Bild 14" class="gallery-item" data-index="13" />
+          <img src="assets/IMG_0413-768x1024.jpeg" alt="Bild 15" class="gallery-item" data-index="14" />
+        </div>
+        <button class="gallery-nav" id="galleryNext" aria-label="Nästa bilder">›</button>
+      </div>
+      <p class="gallery-help">Klicka på en bild för att öppna i större vy.</p>
+    </section>
+
+    <section class="container section" id="kontakt">
+      <h2>Kontakt</h2>
+      <div class="grid-2">
+        <div class="contact card">
+          <p><strong>Järna Bed and Breakfast</strong><br>Dalvägen 1, 153 32 Järna</p>
+          <p><strong>Telefon:</strong> <a href="tel:0706651144">070 665 1144</a><br>
+            <strong>E-post:</strong> <a href="mailto:hans.rekestad@gmail.com">hans.rekestad@gmail.com</a></p>
+          <p><a href="https://www.facebook.com/profile.php?id=61571436275052" target="_blank" rel="noreferrer">Facebook-sida</a></p>
+          <p>300 meter till centrum • 700 meter till pendeltågstationen.</p>
+        </div>
+        <div class="card map-card">
+          <h3>Hitta hit</h3>
+          <iframe
+            title="Karta till Järna Bed and Breakfast"
+            src="https://www.google.com/maps?q=Dalv%C3%A4gen+1%2C+153+32+J%C3%A4rna&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <p class="small"><a href="https://www.google.com/maps/search/?api=1&query=Dalv%C3%A4gen+1%2C+153+32+J%C3%A4rna" target="_blank" rel="noreferrer">Öppna i Google Maps</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="faq">
+      <h2>Vanliga frågor (FAQ)</h2>
+      <div class="faq-list">
+        <details class="card" open>
+          <summary>Hur bokar vi?</summary>
+          <p>Ni bokar direkt via telefon, SMS eller e-post. Ingen bokning via Airbnb eller andra plattformar.</p>
+        </details>
+        <details class="card">
+          <summary>Vad ingår i priset?</summary>
+          <p>Frukost, lakan, handdukar, wi-fi, städning och parkering ingår.</p>
+        </details>
+        <details class="card">
+          <summary>Får man ta med hund?</summary>
+          <p>Ja, hundar är välkomna. Utomhus behöver de hållas kopplade.</p>
+        </details>
+        <details class="card">
+          <summary>Hur många personer får plats?</summary>
+          <p>Lägenheten har upp till fyra sängplatser och ni har alltid hela lägenheten för er själva.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Järna Bed & Breakfast</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-btn close" id="lightboxClose" aria-label="Stäng">✕</button>
+    <button class="lightbox-btn prev" id="lightboxPrev" aria-label="Föregående">‹</button>
+    <img id="lightboxImage" src="" alt="Stor bild" />
+    <button class="lightbox-btn next" id="lightboxNext" aria-label="Nästa">›</button>
+  </div>
+
+  <script>
+    const track = document.getElementById('galleryTrack');
+    const prevBtn = document.getElementById('galleryPrev');
+    const nextBtn = document.getElementById('galleryNext');
+    const items = Array.from(document.querySelectorAll('.gallery-item'));
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    let currentIndex = 0;
+
+    function stepAmount() {
+      return track.clientWidth;
+    }
+
+    prevBtn.addEventListener('click', () => track.scrollBy({ left: -stepAmount(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => track.scrollBy({ left: stepAmount(), behavior: 'smooth' }));
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = items[currentIndex].src;
+      lightbox.style.display = 'flex';
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function showNext(delta) {
+      currentIndex = (currentIndex + delta + items.length) % items.length;
+      lightboxImg.src = items[currentIndex].src;
+    }
+
+    items.forEach((img, i) => img.addEventListener('click', () => openLightbox(i)));
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => showNext(-1));
+    lightboxNext.addEventListener('click', () => showNext(1));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display !== 'flex') return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showNext(-1);
+      if (e.key === 'ArrowRight') showNext(1);
+    });
+
+    let touchStartX = 0;
+    lightbox.addEventListener('touchstart', (e) => touchStartX = e.changedTouches[0].clientX, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      const diff = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(diff) < 40) return;
+      if (diff < 0) showNext(1); else showNext(-1);
+    }, { passive: true });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mainMenu = document.getElementById('mainMenu');
+    menuToggle.addEventListener('click', () => {
+      mainMenu.classList.toggle('open');
+      const expanded = mainMenu.classList.contains('open');
+      menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      menuToggle.textContent = expanded ? '✕' : '☰';
+    });
+    mainMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      if (window.innerWidth <= 560) {
+        mainMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      }
+    }));
+  </script>
+</body>
+</html>

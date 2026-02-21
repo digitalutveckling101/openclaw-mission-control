@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bygg Mission Control i OpenClaw – steg för steg</title>
+  <style>
+    :root{--bg:#080d13;--card:#121a24;--line:#263848;--text:#e8f1f6;--muted:#9db0bb;--accent:#1bc7b3}
+    *{box-sizing:border-box;font-family:Inter,system-ui,Arial,sans-serif}
+    body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#132737,#080d13 60%);color:var(--text)}
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    h1{margin:0 0 8px;font-size:34px}
+    h2{margin:0 0 10px;font-size:24px}
+    h3{margin:0 0 8px;font-size:18px;color:#bff0e6}
+    p{color:var(--muted)}
+    .lead{font-size:17px}
+    .card{margin:14px 0;padding:16px;background:linear-gradient(180deg,#121a24,#0e151e);border:1px solid var(--line);border-radius:14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .mini{padding:12px;border:1px solid #2d4152;border-radius:10px;background:#0e151e}
+    pre{margin:8px 0 0;padding:12px;border:1px solid #284052;border-radius:10px;background:#0b121a;white-space:pre-wrap;overflow:auto}
+    code{color:#9be7db}
+    ol,ul{margin:8px 0 0 20px} li{margin:6px 0}
+    .copy{float:right;border:1px solid #304556;background:#101b27;color:#deebf2;border-radius:8px;padding:6px 10px;cursor:pointer}
+    .ok{display:inline-block;font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #2f6158;background:#113833;color:#c4f5eb}
+    .footer{opacity:.8;text-align:center;padding:18px 0;color:#90a4af}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🚀 Bygg Mission Control i OpenClaw</h1>
+    <p class="lead">En praktisk guide för dig som redan kör OpenClaw + Telegram och vill skapa en professionell, mobilanpassad dashboard med live-synk mellan enheter.</p>
+
+    <section class="card">
+      <h2>Vad du bygger</h2>
+      <div class="grid">
+        <div class="mini"><h3>Mission Control UI</h3><p>Dashboard med moduler: projekt, intäkter, möten, intel, CRM och pipeline.</p></div>
+        <div class="mini"><h3>Publicerad online</h3><p>Hostad via GitHub + Vercel så den fungerar från mobil och dator.</p></div>
+        <div class="mini"><h3>Live-synk</h3><p>Data lagras i Neon Postgres och uppdateras automatiskt mellan enheter.</p></div>
+      </div>
+      <p><span class="ok">Förkunskap: Grundläggande terminalkommandon</span></p>
+    </section>
+
+    <section class="card">
+      <h2>Steg 1: Skapa grundversionen lokalt</h2>
+      <ol>
+        <li>Skapa mapp med filerna <code>index.html</code>, <code>styles.css</code>, <code>app.js</code>.</li>
+        <li>Starta lokal server och testa designen i webbläsaren.</li>
+      </ol>
+      <button class="copy" data-copy="c1">Kopiera</button>
+      <pre id="c1">cd mission-control
+python3 -m http.server 8080
+# Öppna http://localhost:8080</pre>
+    </section>
+
+    <section class="card">
+      <h2>Steg 2: Publicera med GitHub</h2>
+      <ol>
+        <li>Skapa ett tomt repository på GitHub.</li>
+        <li>Pusha din kod till <code>main</code>.</li>
+      </ol>
+      <button class="copy" data-copy="c2">Kopiera</button>
+      <pre id="c2">git init
+git add .
+git commit -m "Mission Control initial"
+git branch -M main
+git remote add origin https://github.com/DITT_NAMN/openclaw-mission-control.git
+git push -u origin main</pre>
+    </section>
+
+    <section class="card">
+      <h2>Steg 3: Deploya i Vercel</h2>
+      <ol>
+        <li>Importera repot i Vercel.</li>
+        <li>Deploya med standardinställningar.</li>
+        <li>Öppna URL:en och kontrollera att UI:t laddar.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Steg 4: Lägg till enkel åtkomstkontroll</h2>
+      <p>Använd ett app-lösenord för att undvika att dashboarden öppnas fritt vid delning av länk.</p>
+      <button class="copy" data-copy="c4">Kopiera</button>
+      <pre id="c4">const APP_PASSWORD = 'BYT-TILL-EGET-LÖSENORD';
+if (sessionStorage.getItem('mc_unlocked') !== '1') {
+  const p = prompt('Mission Control lösenord:');
+  if (p !== APP_PASSWORD) {
+    document.body.innerHTML = '⛔ Access denied';
+    throw new Error('Locked');
+  }
+  sessionStorage.setItem('mc_unlocked','1');
+}</pre>
+    </section>
+
+    <section class="card">
+      <h2>Steg 5: Aktivera live-synk med Neon</h2>
+      <ol>
+        <li>I Vercel: <strong>Storage → Create Database → Neon</strong>.</li>
+        <li>Miljövariabler läggs till automatiskt (t.ex. <code>POSTGRES_URL</code>).</li>
+        <li>Skapa API-route <code>/api/state</code> som sparar/läser dashboard-state.</li>
+      </ol>
+      <button class="copy" data-copy="c5">Kopiera API-mall</button>
+      <pre id="c5">// /api/state.js (förenklad struktur)
+// GET: returnerar state
+// POST: sparar state i tabellen mission_state (id=1)
+// Tabell: mission_state(id int PK, state jsonb, updated_at timestamptz)</pre>
+    </section>
+
+    <section class="card">
+      <h2>Steg 6: Säkra sync-endpointen (rekommenderat)</h2>
+      <ol>
+        <li>Lägg env-variabel <code>SYNC_SECRET</code> i Vercel.</li>
+        <li>POST till <code>/api/state</code> måste skicka header <code>x-sync-secret</code>.</li>
+      </ol>
+      <button class="copy" data-copy="c6">Kopiera kontroll</button>
+      <pre id="c6">const syncSecret = process.env.SYNC_SECRET || '';
+if (req.method === 'POST' && syncSecret) {
+  const provided = req.headers['x-sync-secret'];
+  if (!provided || provided !== syncSecret) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+}</pre>
+    </section>
+
+    <section class="card">
+      <h2>Steg 7: Frontend-logik för automatisk synk</h2>
+      <ul>
+        <li>Spara lokalt direkt vid input (snabb UX).</li>
+        <li>Pusha ändringar till API med debounce (t.ex. 700ms).</li>
+        <li>Pulla från API med intervall (t.ex. var 10:e sekund).</li>
+        <li>Visa sync-status i UI (<code>Syncar…</code>, <code>Synkad ✅</code>, <code>Sync fel ⚠️</code>).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Vanliga fel och snabb fix</h2>
+      <ul>
+        <li><strong>Auth failed vid git push:</strong> använd GitHub PAT-token, inte vanligt lösenord.</li>
+        <li><strong>Ingen synk mellan enheter:</strong> kontrollera att deploy är uppdaterad och att <code>SYNC_SECRET</code> matchar.</li>
+        <li><strong>Mobilen visar gammal version:</strong> hårdrefresh sidan.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Promptpaket (svenska) för OpenClaw</h2>
+      <h3>A) Grundprompt</h3>
+      <button class="copy" data-copy="p1">Kopiera</button>
+      <pre id="p1">Bygg en Mission Control-dashboard i mörk premiumstil med tabs:
+Dashboard, Command Center, Projects, Revenue, Timeline, Intel, Meetings, YouTube, CRM, Pipeline.
+Krav: responsive mobil/desktop, localStorage, KPI-kort, search, clock och tydlig nav.</pre>
+
+      <h3>B) Syncprompt</h3>
+      <button class="copy" data-copy="p2">Kopiera</button>
+      <pre id="p2">Lägg till /api/state för GET/POST mot Neon Postgres.
+Frontend ska autospara lokalt, pusha ändringar till API och hämta uppdateringar regelbundet.
+Visa sync-status i UI.</pre>
+
+      <h3>C) Securityprompt</h3>
+      <button class="copy" data-copy="p3">Kopiera</button>
+      <pre id="p3">Härda /api/state så att POST kräver x-sync-secret om env SYNC_SECRET finns.
+Returnera 401 vid felaktig eller saknad secret.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Klar-checklista</h2>
+      <ul>
+        <li>☑ Dashboard online via Vercel</li>
+        <li>☑ Mobil meny fungerar</li>
+        <li>☑ Data synkar mellan två enheter</li>
+        <li>☑ SYNC_SECRET aktiverad</li>
+      </ul>
+    </section>
+
+    <div class="footer">Mission Control-guide • svensk version • pedagogisk steg-för-steg</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.copy').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-copy');
+        const text = document.getElementById(id).innerText;
+        await navigator.clipboard.writeText(text);
+        const old = btn.innerText;
+        btn.innerText = 'Kopierat ✅';
+        setTimeout(() => btn.innerText = old, 1200);
+      });
+    });
+  </script>
+</body>
+</html>
